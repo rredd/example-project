@@ -1,18 +1,3 @@
-iiversion: 2.1
-
- 
-
-jobs:
-  build:
-    docker:
-      - image: cimg/python:3.9  # Use the CircleCI Python image
-
-    steps:
-      - checkout  # Check out your code
-
-      - run:
-          name: Install dependencies
-          command: |
             python -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
