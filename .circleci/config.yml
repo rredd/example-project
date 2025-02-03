@@ -3,52 +3,34 @@ version: 2.1
  
 
 jobs:
-
   build:
-
     docker:
-
       - image: cimg/python:3.9  # Use the CircleCI Python image
 
     steps:
-
       - checkout  # Check out your code
 
       - run:
-
           name: Install dependencies
-
           command: |
-
-         python -m venv venv
-
+            python -m venv venv
             . venv/bin/activate
-
             pip install -r requirements.txt
 
       - run:
- 
           name: Set PYTHONPATH
- 
-	  command: |
-		export PYTHONPATH=$PYTHONPATH:$(pwd)/src			
+          command: |
+            export PYTHONPATH=$PYTHONPATH:$(pwd)/src
 
       - run:
-
           name: Run tests
-
           command: |
-
             . venv/bin/activate
-
             pytest
 
 workflows:
-
   version: 2
-
   build_and_test:
-
     jobs:
-
       - build
+
